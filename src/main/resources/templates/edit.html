@@ -10,7 +10,7 @@
 <h2>Edit User</h2>
 
 <form method="post" action="/editUser" th:object="${user}">
-
+    <input type="hidden" name="_method" value="PATCH">
     <br>
         <label for="name">Id</label>
         <input readonly type="number" th:field="*{id}" id="id">
