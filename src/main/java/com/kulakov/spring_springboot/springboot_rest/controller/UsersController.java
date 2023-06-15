@@ -40,7 +40,10 @@ public class UsersController {
 
         model.addAttribute("user", userService.getUserByID(id));
 
-        return "user-info";
+        if (userService.getUserByID(id) == null) {
+            return "error-page";
+        }
+            return "user-info";
     }
 
     @GetMapping("/editUserById")
@@ -48,7 +51,9 @@ public class UsersController {
 
         model.addAttribute("user", userService.getUserByID(id));
 
-
+        if (userService.getUserByID(id) == null) {
+            return "error-page";
+        }
         return "edit";
     }
 
@@ -60,9 +65,12 @@ public class UsersController {
         return "redirect:/";
     }
 
-    @RequestMapping("/deleteUserById")
+    @GetMapping("/deleteUserById")
     public String deleteUser(@RequestParam(value = "id", required = false) Long id) {
 
+        if (userService.getUserByID(id) == null) {
+            return "error-page";
+        }
         userService.deleteUserByID(id);
 
         return "redirect:/";
