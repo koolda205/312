@@ -26,12 +26,20 @@ public class UsersController {
         return "users";
     }
 
+    @GetMapping("/admin")
+    public String adminShowUsers(Model model) {
+
+        model.addAttribute("allUsers", userService.getAllUsers());
+
+        return "admin";
+    }
+
     @PostMapping("/addNewUser")
     public String saveUser(@ModelAttribute("user") User user) {
 
         userService.saveUser(user);
 
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @GetMapping("/findUsersById")
@@ -62,7 +70,7 @@ public class UsersController {
 
         userService.editUser(user);
 
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @GetMapping("/deleteUserById")
@@ -73,7 +81,7 @@ public class UsersController {
         }
         userService.deleteUserByID(id);
 
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
 
