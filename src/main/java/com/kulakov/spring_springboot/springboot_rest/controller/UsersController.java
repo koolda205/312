@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.regex.Pattern;
-
 @Controller
 public class UsersController {
 
@@ -25,7 +23,7 @@ public class UsersController {
 
         model.addAttribute("allUsers", userService.getAllUsers());
 
-        return "all-users";
+        return "users";
     }
 
     @PostMapping("/addNewUser")
