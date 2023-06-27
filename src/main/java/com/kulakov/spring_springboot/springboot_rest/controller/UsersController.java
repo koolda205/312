@@ -17,8 +17,13 @@ public class UsersController {
         this.userService = userService;
     }
 
-
     @GetMapping("/")
+    public String welcomPage() {
+
+        return "welcom";
+    }
+
+    @GetMapping("/users")
     public String showAllUsers(Model model) {
 
         model.addAttribute("allUsers", userService.getAllUsers());
