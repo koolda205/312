@@ -18,15 +18,15 @@ public class UsersController {
     }
 
     @GetMapping("/")
-    public String welcomPage() {
+    public String welcomePage() {
 
-        return "welcom";
+        return "welcome";
     }
 
     @GetMapping("/users")
     public String showAllUsers(Model model) {
 
-        model.addAttribute("allUsers", userService.getAllUsers());
+        model.addAttribute("users", userService.getAllUsers());
 
         return "users";
     }
@@ -34,7 +34,7 @@ public class UsersController {
     @GetMapping("/admin")
     public String adminShowUsers(Model model) {
 
-        model.addAttribute("allUsers", userService.getAllUsers());
+        model.addAttribute("users", userService.getAllUsers());
 
         return "admin";
     }
